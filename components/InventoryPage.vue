@@ -205,13 +205,13 @@ export default {
   },
   computed: {},
   async fetch() {
-    await axios({
-      url:
-        'http://localhost:8080/posts/?' + '_creator=' + this.$route.params._id,
-      method: 'GET',
-    }).then((response) => {
+    // await axios({
+    //   url:
+    //     'http://localhost:8080/posts/?' + '_creator=' + this.$route.params._id,
+    //   method: 'GET',
+    // }).then((response) => {
       // console.log(response)
-      this.godarData = response.data
+      this.godarData =this.$store.state.products
       for (let i = 0; i < this.godarData.length; i) {
         this.product.picture = this.godarData[i].contents[0].url
         this.product.name = this.godarData[i].product_name
@@ -219,7 +219,7 @@ export default {
         this.product.price = this.godarData[i].product_price
         this.products.push(this.product)
       }
-    })
+    // })
   },
   methods: {
     save() {

@@ -277,16 +277,17 @@ export default {
       return selections
     },
   },
-  created() {
-    axios({
-      url:
-        'http://localhost:8080/posts/?' + '_creator=' + this.$route.params._id,
-      method: 'GET',
-    }).then((response) => {
-      console.log(response.data)
-      this.godarData = response.data
-    })
-    axios({
+  async fetch() {
+  //  await  axios({
+  //     url:
+  //       'http://localhost:8080/posts/?' + '_creator=' + this.$route.params._id,
+  //     method: 'GET',
+  //   }).then((response) => {
+  //     console.log(response.data)
+  //     this.godarData = response.data
+  //   })
+  this.godarData = this.$store.state.products
+   await axios({
       url: 'http://localhost:8080/creators/?' + '_id=' + this.$route.params._id,
       method: 'GET',
     }).then((response) => {

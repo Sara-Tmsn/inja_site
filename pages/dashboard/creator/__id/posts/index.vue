@@ -47,15 +47,16 @@ export default {
     };
   },
   async fetch() {
-    await axios({
-      url: "http://localhost:8080/posts?" +
-      "_creator=" + this.$route.params._id,
-      method: "GET",
-    }).then((response) => {
-      this.godarData = response.data;
+  this.godarData = this.$store.state.products
+    // await axios({
+    //   url: "http://localhost:8080/posts?" +
+    //   "_creator=" + this.$route.params._id,
+    //   method: "GET",
+    // }).then((response) => {
+    //   this.godarData = response.data;
       // console.log(this.scrollOptions);
       // this.$vuetify.goTo(this.$route.hash, this.scrollOptions);
-    });
+    // });
   },
    mounted() {
     this.scrolltimer = setTimeout(() => {this.$vuetify.goTo(this.$route.hash, this.scrollOptions);}, 200)
