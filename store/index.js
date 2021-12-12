@@ -10,6 +10,21 @@ Vue.use(Vuex)
 
 export default () => new Vuex.Store({
   state: () => ({
+    creators:[
+      {
+        _id: "61811bf8908df91dad7a0afe",
+        full_name: "گُدار",
+        username: "godarhandmade",
+        biography: "«گدار» گذرگاهی ست از هنر دیروز به هنر امروز",
+        banner_image: [
+          "https://i.picsum.photos/id/45/500/300.jpg?hmac=4Ee7BZI2J5ysNej6CdyZBr0mnv0Tb-6VoYahGJVeKC8"
+        ],
+        phone_number: "+989351142844",
+        location: "https://www.google.com/maps/dir/35.7131699,51.3784919/Tehran+Province,+Tehran,+5th+Niroo+Havayi,+%D8%A8%D8%B3%D8%AA%D9%86%DB%8C+%D9%86%D8%B9%D9%85%D8%AA%E2%80%AD%E2%80%AD/@35.7217075,51.3982664,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3f8e0291a3aaeb65:0x28f83faa2efdab0!2m2!1d51.4854435!2d35.7008834",
+        profile_pic_url: "https://scontent-frx5-1.cdninstagram.com/v/t51.2885-19/11377447_1601762846779733_898280204_a.jpg?_nc_ht=scontent-frx5-1.cdninstagram.com&_nc_ohc=Zs-iORmxploAX_tNaFv&edm=ABfd0MgBAAAA&ccb=7-4&oh=625b46170d072252fab33aee9edb6ab5&oe=60EF8B4E&_nc_sid=7bff83",
+        profile_pic_url_hd: "https://scontent-frx5-1.cdninstagram.com/v/t51.2885-19/11377447_1601762846779733_898280204_a.jpg?_nc_ht=scontent-frx5-1.cdninstagram.com&_nc_ohc=Zs-iORmxploAX_tNaFv&edm=ABfd0MgBAAAA&ccb=7-4&oh=625b46170d072252fab33aee9edb6ab5&oe=60EF8B4E&_nc_sid=7bff83}"
+      }
+    ],
     products: [{
       _id: "618121b6908df91dad7a0b10",
       _creator: "61811bf8908df91dad7a0afe",

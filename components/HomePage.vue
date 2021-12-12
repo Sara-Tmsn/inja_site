@@ -1,4 +1,3 @@
-
 <template>
   <v-container pa-0 style="max-width: 935px">
     <Header
@@ -17,25 +16,29 @@
       <v-col cols="12" class="mt-14">
         <div v-if="admin">
           <v-img v-if="url" :src="url" aspect-ratio="2" width="100%"></v-img>
-<!--          <v-card v-else flat style="border: dashed 2px #0095f6" class="mx-4 mt-4 mb-2">-->
-            <v-file-input
-              v-model="banner"
-              solo
-              outlined
-              justify="center"
-              class="px-4 text-body-2 font-weight-medium"
-              accept="image/png, image/jpeg, image/bmp"
-              prepend-inner-icon="mdi-plus-circle-outline"
-              prepend-icon=""
-              :style="url ? 'margin-top: 0; border-style: 0 none' : 'margin-top: 8px; border-style: dashed 2px #0095f6'"
-              placeholder="برای فروشگاه خود بنر انتخاب کنید"
-              flat
-              dense
-              hide-details
-              :hide-input="url.length != 0"
-              @change="Preview_image"
-            ></v-file-input>
-<!--          </v-card>-->
+          <!--          <v-card v-else flat style="border: dashed 2px #0095f6" class="mx-4 mt-4 mb-2">-->
+          <v-file-input
+            v-model="banner"
+            solo
+            outlined
+            justify="center"
+            class="px-4 text-body-2 font-weight-medium"
+            accept="image/png, image/jpeg, image/bmp"
+            prepend-inner-icon="mdi-plus-circle-outline"
+            prepend-icon=""
+            :style="
+              url
+                ? 'margin-top: 0; border-style: 0 none'
+                : 'margin-top: 8px; border-style: dashed 2px #0095f6'
+            "
+            placeholder="برای فروشگاه خود بنر انتخاب کنید"
+            flat
+            dense
+            hide-details
+            :hide-input="url.length != 0"
+            @change="Preview_image"
+          ></v-file-input>
+          <!--          </v-card>-->
           <!-- <v-file-input
             v-model="banner"
             :disabled="!editingVendor"
@@ -145,18 +148,15 @@
                 top: 0;
                 left: 4px;
               "
-              :to="{ name: 'dashboard-creator-_id-home-media', params: {_id: $route.params._id}}"
+              :to="{
+                name: 'dashboard-creator-_id-home-media',
+                params: { _id: $route.params._id },
+              }"
               icon
               ><v-icon style="color: #262626">mdi-tune</v-icon></v-btn
             >
           </div>
-          <v-tabs
-            v-model="tab"
-            right
-            grow
-            color="#262626"
-            slider-size="1"
-          >
+          <v-tabs v-model="tab" right grow color="#262626" slider-size="1">
             <v-tab v-for="(item, index) in tags" :key="index"
               >{{ item.title }}
             </v-tab>
@@ -184,10 +184,7 @@
               cols="4"
               class="image-padding"
             >
-              <post-card
-                :post="post"
-                :config="cardConfig"
-              />
+              <post-card :post="post" :config="cardConfig" />
             </v-col>
           </v-row>
         </v-tab-item>
@@ -278,24 +275,27 @@ export default {
     },
   },
   async fetch() {
-  //  await  axios({
-  //     url:
-  //       'http://localhost:8080/posts/?' + '_creator=' + this.$route.params._id,
-  //     method: 'GET',
-  //   }).then((response) => {
-  //     console.log(response.data)
-  //     this.godarData = response.data
-  //   })
-  this.godarData = this.$store.state.products
-   await axios({
-      url: 'http://localhost:8080/creators/?' + '_id=' + this.$route.params._id,
-      method: 'GET',
-    }).then((response) => {
-      // console.log(response.data)
-      this.creatorData = response.data[0]
-      this.full_name = this.creatorData.full_name
-      this.userName = this.creatorData.username
-    })
+    //  await  axios({
+    //     url:
+    //       'http://localhost:8080/posts/?' + '_creator=' + this.$route.params._id,
+    //     method: 'GET',
+    //   }).then((response) => {
+    //     console.log(response.data)
+    //     this.godarData = response.data
+    //   })
+    this.godarData = this.$store.state.products
+    this.creatorData = this.$store.state.creators[0]
+    this.full_name = this.creatorData.full_name
+    this.userName = this.creatorData.username
+    //  await axios({
+    //     url: 'http://localhost:8080/creators/?' + '_id=' + this.$route.params._id,
+    //     method: 'GET',
+    //   }).then((response) => {
+    //     // console.log(response.data)
+    //     this.creatorData = response.data[0]
+    //     this.full_name = this.creatorData.full_name
+    //     this.userName = this.creatorData.username
+    //   })
   },
   methods: {
     onBasketButtonClick() {

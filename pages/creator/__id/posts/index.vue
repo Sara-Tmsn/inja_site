@@ -1,4 +1,3 @@
-
 <template>
   <v-container style="max-width: 935px">
     <Header
@@ -21,13 +20,13 @@
 </template>
 
 <script>
-"use strict";
-import ProductCard from "../../../../components/ProductCard.vue";
-import Header from "../../../../components/Header.vue";
-import axios from "axios";
+'use strict'
+import ProductCard from '../../../../components/ProductCard.vue'
+import Header from '../../../../components/Header.vue'
+import axios from 'axios'
 
 export default {
-  name: "Posts",
+  name: 'Posts',
   components: {
     ProductCard,
     Header,
@@ -41,11 +40,11 @@ export default {
       scrollOptions: {
         duration: 500,
         offset: 0,
-        easing: "easeInQuad",
+        easing: 'easeInQuad',
       },
       editingVendor: false,
-      scrolltimer: null
-    };
+      scrolltimer: null,
+    }
   },
   async fetch() {
     // await axios({
@@ -55,40 +54,41 @@ export default {
     // }).then((response) => {
     //   this.godarData = response.data;
     // });
-  this.godarData = this.$store.state.products
-    console.log('fetch @ CreatorPosts')
-
-    await axios({
-      url: "http://localhost:8080/creators/?" +
-      "_id=" + this.$route.params._id,
-      method: "GET",
-    }).then((response) => {
-      this.creatorData = response.data;
-      this.full_name = this.creatorData.full_name;
-      this.userName = this.creatorData.username;
-      // this.$vuetify.goTo(this.$route.hash, this.scrollOptions);
-    });
+    this.godarData = this.$store.state.products
+    // console.log('fetch @ CreatorPosts')
+    this.creatorData = this.$store.state.creators[0]
+    this.full_name = this.creatorData.full_name
+    this.userName = this.creatorData.username
+    // await axios({
+    //   url: "http://localhost:8080/creators/?" +
+    //   "_id=" + this.$route.params._id,
+    //   method: "GET",
+    // }).then((response) => {
+    //   this.creatorData = response.data;
+    //   this.full_name = this.creatorData.full_name;
+    //   this.userName = this.creatorData.username;
+    //   // this.$vuetify.goTo(this.$route.hash, this.scrollOptions);
+    // });
   },
   mounted() {
-    this.scrolltimer = setTimeout(() => {this.$vuetify.goTo(this.$route.hash, this.scrollOptions);}, 100)
+    this.scrolltimer = setTimeout(() => {
+      this.$vuetify.goTo(this.$route.hash, this.scrollOptions)
+    }, 100)
   },
-  unmounted () {
+  unmounted() {
     clearTimeout(this.scrolltimer)
   },
-  watch: {
-  },
+  watch: {},
   // updated() {
 
   // },
-  computed: {
-  },
+  computed: {},
   methods: {
     handleEditVendor(e) {
-      this.editingVendor = e;
+      this.editingVendor = e
     },
   },
-};
+}
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
