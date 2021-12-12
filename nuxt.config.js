@@ -86,5 +86,7 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {
+     uri: process.env.MONGODB_URI
+  }
 }
