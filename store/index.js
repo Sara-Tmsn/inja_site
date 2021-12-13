@@ -218,7 +218,7 @@ export default () => new Vuex.Store({
         {
           url: "@/static/ritoon-image/16-6.jpg"
         },
-        value {
+       {
           url: "@/static/ritoon-image/16-7.jpg"
         },
         {
