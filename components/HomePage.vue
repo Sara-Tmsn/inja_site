@@ -262,7 +262,7 @@ export default {
         easing: 'easeInQuad',
       },
       // editingVendor: false,
-      banner: [],
+      banner: '',
     }
   },
   computed: {

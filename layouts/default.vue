@@ -2,8 +2,8 @@
   <div id="app">
     <v-app>
       <v-main>
-    <Login />
-    <!-- <ShoppingCart /> -->
+        <Login />
+        <!-- <ShoppingCart /> -->
         <router-view />
       </v-main>
     </v-app>
@@ -26,26 +26,27 @@ export default {
   data: () => ({
     //
   }),
-  mounted () {
-     let cart = localStorage.getItem('cart');
+  mounted() {
+    let cart = localStorage.getItem('cart')
     // console.log(JSON.parse(cart))
-     this.$store.dispatch('updateCartFromLocalStorage', JSON.parse(cart))
-  }
+    this.$store.dispatch('updateCartFromLocalStorage', JSON.parse(cart))
+  },
 }
 </script>
 
 <style>
 @font-face {
-  font-family: "IRANSans";
-  src: local("IRANSans"), url("../static/fonts/IRANSans-Medium.ttf") format("truetype");
+  font-family: 'IRANSans';
+  src: local('IRANSans'),
+    url('../static/fonts/IRANSans-Medium.ttf') format('truetype');
 }
 .v-text-field input {
-    font-size: 1em;
-  }
-  .v-label {
-    font-size: 1em !important;
-  }
-  .btn {
+  font-size: 1em;
+}
+.v-label {
+  font-size: 1em !important;
+}
+.btn {
   border: 1px solid #dbdbdb !important;
   color: #262626 !important;
   font-size: 12px !important;

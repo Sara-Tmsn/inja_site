@@ -23,7 +23,7 @@
 'use strict'
 import ProductCard from '../../../../components/ProductCard.vue'
 import Header from '../../../../components/Header.vue'
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   name: 'Posts',
