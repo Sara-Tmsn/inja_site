@@ -55,7 +55,7 @@
             @change="Preview_image"
           ></v-file-input> -->
         </div>
-        <v-img v-else src="/godar.jpg" aspect-ratio="2" width="100%" />
+        <v-img v-else :src="$store.state.creators[0].banner_image" aspect-ratio="2" width="100%" />
       </v-col>
       <v-col cols="12" class="py-2 px-4 ma-0">
         <v-textarea
