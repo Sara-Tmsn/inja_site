@@ -29,7 +29,7 @@ export default {
   mounted() {
     let cart = localStorage.getItem('cart')
     // console.log(JSON.parse(cart))
-    this.$store.dispatch('updateCartFromLocalStorage', JSON.parse(cart))
+    // this.$store.dispatch('updateCartFromLocalStorage', JSON.parse(cart))
   },
 }
 </script>

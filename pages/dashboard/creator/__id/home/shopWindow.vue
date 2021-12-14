@@ -7,7 +7,7 @@
 "use strict";
 import HomePage from "../../../../../components/HomePage.vue";
 export default {
-  name: "HomeDashboard",
+  name: "ShopWindow",
   layout: 'dashboard',
   components: {
     HomePage,

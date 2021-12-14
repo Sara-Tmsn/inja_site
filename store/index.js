@@ -229,6 +229,7 @@ export default () => new Vuex.Store({
       numbersAvailable: 17
     }],
     loginDialog: false,
+    shippingDialog: false,
     cart: [],
     shopWindow: [],
     types: [
@@ -264,6 +265,9 @@ export default () => new Vuex.Store({
     },
     toggleLoginDialog(state) {
       state.loginDialog = !state.loginDialog
+    },
+    toggleShippingDialog(state) {
+      state.shippingDialog = !state.shippingDialog
     },
     addToCart(state, payload) {
       // console.log(payload)
@@ -349,49 +353,49 @@ export default () => new Vuex.Store({
   },
 
   actions: { //asyncronous
-    updateCartFromLocalStorage({
-      state,
-      commit
-    }, payload) {
-      // console.log(payload)
-      if (payload && payload.length) {
-        payload.forEach(item => {
-          axios({
-            url: "http://localhost:8080/posts/?" +
-              "_id=" +
-              item.id,
-            method: "GET",
-          }).then((response) => {
-            commit('updateCart', {
-              product: response.data[0],
-              qty: item.qty
-            })
-          });
-        });
-        console.log(state)
-      }
-    },
-    updateShopWindowsFromLocalStorage({
-      state,
-      commit
-    }, payload) {
-      console.log(payload)
-      if (payload && payload.length) {
-        payload.forEach(item => {
-          axios({
-            url: "http://localhost:8080/posts/?" +
-              "_id=" +
-              item.id,
-            method: "GET",
-          }).then((response) => {
-            commit('updateShopWindows', {
-              product: response.data[0],
-              instock: item.instock
-            })
-          });
-        });
-        console.log(state)
-      }
-    }
+    // updateCartFromLocalStorage({
+    //   state,
+    //   commit
+    // }, payload) {
+    //   // console.log(payload)
+    //   if (payload && payload.length) {
+    //     payload.forEach(item => {
+    //       axios({
+    //         url: "http://localhost:8080/posts/?" +
+    //           "_id=" +
+    //           item.id,
+    //         method: "GET",
+    //       }).then((response) => {
+    //         commit('updateCart', {
+    //           product: response.data[0],
+    //           qty: item.qty
+    //         })
+    //       });
+    //     });
+    //     console.log(state)
+    //   }
+    // },
+    // updateShopWindowsFromLocalStorage({
+    //   state,
+    //   commit
+    // }, payload) {
+    //   console.log(payload)
+    //   if (payload && payload.length) {
+    //     payload.forEach(item => {
+    //       axios({
+    //         url: "http://localhost:8080/posts/?" +
+    //           "_id=" +
+    //           item.id,
+    //         method: "GET",
+    //       }).then((response) => {
+    //         commit('updateShopWindows', {
+    //           product: response.data[0],
+    //           instock: item.instock
+    //         })
+    //       });
+    //     });
+    //     console.log(state)
+    //   }
+    // }
   }
 });

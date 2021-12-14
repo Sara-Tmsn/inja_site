@@ -145,7 +145,7 @@
               :style="editing ? 'margin: 0 0 16px 0' : 'margin: 0'"
             > -->
               <v-text-field
-                v-model="product_name"
+                v-model="post.product_name"
                 outlined
                 placeholder="نام محصول"
                 dense
@@ -242,7 +242,7 @@
                 <v-text-field
                   class="font-weight-mudium ma-0 shrink dark-disabled-text"
                   color="#707070"
-                  v-model="qty"
+                  v-model="post.numbersAvailable"
                   style="width: auto; max-width: 50px"
                   outlined
                   hide-details
@@ -291,7 +291,7 @@
             </v-col>
             <v-col cols="6" class="px-0">
               <v-text-field
-                v-model="product_price"
+                v-model="post.product_price"
                 color="#707070"
                 outlined
                 hide-details

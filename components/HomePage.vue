@@ -177,7 +177,7 @@
     <v-row no-gutters class="rows-left-margin">
       <v-tabs-items v-model="tab" style="width: 100%">
         <v-tab-item v-if="admin">
-          <v-row no-gutters>
+          <v-row no-gutters class="mb-16">
             <v-col
               v-for="(post, index) in godarData"
               :key="'post' + index"
@@ -231,7 +231,7 @@
 
 <script>
 'use strict'
-import axios from 'axios'
+// import axios from 'axios'
 import PostCard from './PostCard.vue'
 import Header from './Header.vue'
 export default {
@@ -247,14 +247,14 @@ export default {
       full_name: '',
       url: '',
       error: false,
-      tab: null,
+      tab: [],
       tags: [
         { title: 'همه', icon: 'mdi-grid' },
         { title: 'موجود', icon: 'mdi-bell-check-outline' },
         { title: 'حراج', icon: 'mdi-percent-outline' },
       ],
       // items: [{ title: 'پست‌ها', icon: 'mdi-apps-outline' }],
-      godarData: null,
+      godarData: [],
       creatorData: {},
       scrollOptions: {
         duration: 500,
@@ -262,7 +262,7 @@ export default {
         easing: 'easeInQuad',
       },
       // editingVendor: false,
-      banner: '',
+      banner: [],
     }
   },
   computed: {
@@ -274,7 +274,7 @@ export default {
       return selections
     },
   },
-  async fetch() {
+  fetch() {
     //  await  axios({
     //     url:
     //       'http://localhost:8080/posts/?' + '_creator=' + this.$route.params._id,

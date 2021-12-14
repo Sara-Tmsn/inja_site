@@ -32,19 +32,19 @@
             ></v-text-field>
           </template>
           <template v-slot:[`item.picture`]="{ item }">
-            <v-img :src="item.picture" aspect-ratio="1" width="100%"
+            <v-img :src="item.contents[0].url" aspect-ratio="1" width="100%"
           /></template>
           <template v-slot:[`item.name`]="{ item }">
             <p
               class="ma-0 pa-0 d-inline-block text-truncate"
               style="max-width: 72px"
             >
-              {{ item.name }}
+              {{ item.product_name }}
             </p></template
           >
           <template v-slot:[`item.stock`]="props">
             <v-edit-dialog
-              :return-value.sync="props.item.stock"
+              :return-value.sync="props.item.numbersAvailable"
               large
               save-text="ذخیره"
               cancel-text="لغو"
@@ -52,10 +52,10 @@
               @cancel="cancel"
               @save="save"
             >
-              <div>{{ props.item.stock }}</div>
+              <div>{{ props.item.numbersAvailable }}</div>
               <template v-slot:input>
                 <v-text-field
-                  v-model="props.item.stock"
+                  v-model="props.item.numbersAvailable"
                   outlined
                   dense
                   hide-details
@@ -69,7 +69,7 @@
           </template>
           <template v-slot:[`item.price`]="props">
             <v-edit-dialog
-              :return-value.sync="props.item.price"
+              :return-value.sync="props.item.product_price"
               large
               save-text="ذخیره"
               cancel-text="لغو"
@@ -77,10 +77,10 @@
               @cancel="cancel"
               @save="priceEditSave"
             >
-              <div>{{ props.item.price }}</div>
+              <div>{{ props.item.product_price }}</div>
               <template v-slot:input>
                 <v-text-field
-                  v-model="props.item.price"
+                  v-model="props.item.product_price"
                   outlined
                   dense
                   hide-details
@@ -107,7 +107,7 @@
 
 <script>
 'use strict'
-import axios from 'axios'
+// import axios from 'axios'
 import Header from './Header.vue'
 export default {
   name: 'InventoryPage',
@@ -138,87 +138,21 @@ export default {
         { text: 'موجودی', value: 'stock' },
         { text: 'قیمت (تومان)', value: 'price' },
       ],
-      product: {},
+      // product: {},
+      godarData: [],
       products: [],
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'رومیزی',
-      //     stock: 6,
-      //     price: 240000,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'بند کفش',
-      //     stock: 10,
-      //     price: 3000,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'روسری',
-      //     stock: 0,
-      //     price: 85000,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'کفش',
-      //     stock: 10,
-      //     price: 450000,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'شلوار',
-      //     stock: 5,
-      //     price: 189000,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'مانتو فلان',
-      //     stock: 42,
-      //     price: 250000,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'روسری توسری، توسری روسری',
-      //     stock: 6,
-      //     price: 36000,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'محصول شماره 3',
-      //     stock: 7,
-      //     price: 24500,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'محصول شماره 4',
-      //     stock: 8,
-      //     price: 70000,
-      //   },
-      //   {
-      //     picture: 'https://picsum.photos/100',
-      //     name: 'محصول شماره 5',
-      //     stock: 11,
-      //     price: 92000,
-      //   },
-      // ],
     }
   },
-  computed: {},
-  async fetch() {
-    // await axios({
-    //   url:
-    //     'http://localhost:8080/posts/?' + '_creator=' + this.$route.params._id,
-    //   method: 'GET',
-    // }).then((response) => {
-      // console.log(response)
+  fetch() {
       this.godarData =this.$store.state.products
-      for (let i = 0; i < this.godarData.length; i) {
-        this.product.picture = this.godarData[i].contents[0].url
-        this.product.name = this.godarData[i].product_name
-        this.product.stock = this.godarData[i].numbersAvailable
-        this.product.price = this.godarData[i].product_price
-        this.products.push(this.product)
-      }
+      this.products = [...this.godarData]
+      // for (let i = 0; i < this.godarData.length; i) {
+      //   this.product.picture = this.godarData[i].contents[0].url
+      //   this.product.name = this.godarData[i].product_name
+      //   this.product.stock = this.godarData[i].numbersAvailable
+      //   this.product.price = this.godarData[i].product_price
+      //   this.products.push(this.product)
+      // }
     // })
   },
   methods: {

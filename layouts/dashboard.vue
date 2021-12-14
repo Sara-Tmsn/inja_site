@@ -25,7 +25,7 @@ export default {
   }),
   mounted () {
      let shopWindow = localStorage.getItem('shopWindow');
-     this.$store.dispatch('updateShopWindowsFromLocalStorage', JSON.parse(shopWindow))
+    //  this.$store.dispatch('updateShopWindowsFromLocalStorage', JSON.parse(shopWindow))
   }
 }
 </script>
